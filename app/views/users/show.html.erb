@@ -1,0 +1,9 @@
+<h1>List of all the events created by this user.</h1>
+<ul>
+  <% @events.each do |e| %>
+  <li>Event name: <%= e.name %></li>
+  <li>Location : <%= e.location %></li>
+  <li>Date: <%= e.date %>   </li>
+  <br>
+  <% end %>
+</ul>
