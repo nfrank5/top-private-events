@@ -10,10 +10,7 @@
 <h2>Invitations List</h2>
 <ul>
   <% @event.invitations.each do |i| %>
-
   <li>Attendee email : <%= i.attendee.email %></li>
-  <li>Confirmed : <%= i.accept %>   </li>
-
   <br>
   <% end %>
 </ul>

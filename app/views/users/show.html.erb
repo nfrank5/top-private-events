@@ -10,11 +10,38 @@
 
 <h2>List of all the events <%= current_user.email %> has been invited.</h2>
 
-<ul>
-  <% current_user.attended_events.each do |e| %>
-  <li>Event name: <%= e.name %></li>
-  <li>Location : <%= e.location %></li>
-  <li>Date: <%= e.date %>   </li>
-  <br>
-  <% end %>
-</ul>
+<table>
+  <tr>
+    <th>Next Events:</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <% current_user.attended_events.where("date >= ?", DateTime.now).each do |e| %>
+        <li>Event name: <%= e.name %></li>
+        <li>Location : <%= e.location %></li>
+        <li>Date: <%= e.date %>   </li>
+        <br>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <th>Last Events:</th>
+  </tr>
+  <tr>
+    <td>
+      <ul>
+        <% current_user.attended_events.where("date <= ?", DateTime.now).each do |e| %>
+        <li>Event name: <%= e.name %></li>
+        <li>Location : <%= e.location %></li>
+        <li>Date: <%= e.date %>   </li>
+        <br>
+        <% end %>
+      </ul>
+    </td>
+  </tr>
+</table>
