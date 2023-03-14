@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
 
   #get 'events/index'
-  resources :events
+  resources :events, only: [:new, :create, :index, :show]
+  resources :invitations, only: [:create]
   get 'users/:id' => 'users#show'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

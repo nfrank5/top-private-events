@@ -1,5 +1,19 @@
-
+<h1>Event:</h1>
 <li>Event name: <%= @event.name %></li>
 <li>Location : <%= @event.location %></li>
 <li>Date: <%= @event.date %>   </li>
+<li><%= link_to 'Attend this Event', invitations_path(event_id: @event.id),  data: {turbo_method: "post"} %></li>
 <br>
+
+
+
+<h2>Invitations List</h2>
+<ul>
+  <% @event.invitations.each do |i| %>
+
+  <li>Attendee email : <%= i.attendee.email %></li>
+  <li>Confirmed : <%= i.accept %>   </li>
+
+  <br>
+  <% end %>
+</ul>
