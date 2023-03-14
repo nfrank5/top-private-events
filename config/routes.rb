@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #get 'events/index'
   resources :events, only: [:new, :create, :index, :show]
   resources :invitations, only: [:create]
-  get 'users/:id' => 'users#show'
+  get 'users/:id' => 'users#show', as: 'user'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -11,6 +11,25 @@
   </head>
 
   <body>
+    <table>
+      <tr>
+        <td>
+                    
+
+        </td>
+        <td>
+            <% if current_user %> 
+              <%= link_to 'My profile | ', user_path(current_user) %> 
+            <% end %> 
+        </td>
+        <td>
+          <%= link_to 'Create New Event | ', new_event_path %>
+        </td>
+        <td>
+          <%= link_to 'Events | ', events_path %>
+        </td>
+      </tr>
+    </table>
     <%= yield %>
   </body>
 </html>
