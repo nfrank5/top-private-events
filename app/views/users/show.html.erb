@@ -8,11 +8,12 @@
   <li>Event name: <%= e.name %></li>
   <li>Location : <%= e.location %></li>
   <li>Date: <%= e.date %>   </li>
+  <li><%= link_to 'Edit/Delete Event', edit_event_path(id: e.id) %></li>
   <br>
   <% end %>
 </ul>
 
-<h2>List of all the events <%= current_user.email %> is attending.</h2>
+<h2>List of all the events <%= current_user.email %> is attending or attended.</h2>
 
 <table>
   <tr>

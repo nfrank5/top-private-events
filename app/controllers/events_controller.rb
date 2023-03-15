@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!
 
-  
   def index
     @events = Event.all
   end
@@ -21,11 +20,32 @@ class EventsController < ApplicationController
       flash.now[:alert] = "Event not saved!"
       render :new, status: :unprocessable_entity
     end
-
   end
 
   def show
     @event = Event.find(params[:id])
+  end
+  
+  def edit
+    @event = Event.find(params[:id])
+  end
+
+  def update
+    @event = Event.find(params[:id])
+
+    if @event.update(event_params)
+      redirect_to @event
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    p params
+    @event = Event.find(params[:id])
+
+    @event.destroy
+    redirect_to root_path, status: :see_other
   end
 
   private
