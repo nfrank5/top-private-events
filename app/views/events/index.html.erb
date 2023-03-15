@@ -1,13 +1,14 @@
-<h1>List of all Events</h1>
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :div, msg, class: name %>
-    <% end -%>
+<h1>List of Upcoming Events</h1>
+<% flash.each do |name, msg| -%>
+  <%= content_tag :div, msg, class: name %>
+<% end -%>
 <ul>
-  <% @events.each do |e| %>
+  <% @events.upcoming_events.each do |e| %>
   <li>Event name: <%= e.name %></li>
   <li>Location : <%= e.location %></li>
   <li>Date: <%= e.date %>   </li>
   <li><%= link_to 'Attend this Event', invitations_path(event_id: e.id),  data: {turbo_method: "post"} %></li>
+  <li><%= link_to 'Event Details', event_path(id: e.id) %></li>
   <br>
   <% end %>
 </ul>

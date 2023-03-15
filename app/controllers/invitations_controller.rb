@@ -5,12 +5,12 @@ class InvitationsController < ApplicationController
     @invitation = current_user.invitations.build(attended_event_id: params[:event_id])
 
     if @invitation.save
-      redirect_to root_path
       flash[:notice] = "You have successfully added the Event: #{Event.find(params[:event_id]).name}"
+      redirect_to root_path
     else
-      render root_path, status: :unprocessable_entity
+      flash.now[:alert] = "You are already in that Event list."
+      render "users/show", status: :unprocessable_entity 
     end
-
   end
 
 end

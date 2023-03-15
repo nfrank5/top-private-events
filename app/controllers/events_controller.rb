@@ -15,8 +15,10 @@ class EventsController < ApplicationController
     @event = @user.created_events.build(event_params)
 
     if @event.save
+      flash[:notice] = "You created:"
       redirect_to @event
     else
+      flash.now[:alert] = "Event not saved!"
       render :new, status: :unprocessable_entity
     end
 
